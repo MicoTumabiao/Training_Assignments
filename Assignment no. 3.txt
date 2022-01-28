@@ -1,0 +1,50 @@
+--1
+create table salesman_master
+(salesman_no Varchar(6) primary key check(salesman_no like 'S%'), salesman_name Varchar(20) not null, Address1 Varchar(30) not null, Address2 Varchar(30) not null,
+city Varchar(20), pin_code Varchar(6), state Varchar(20), sal_amt Number(8,2) not null, tgt_to_get Number(6,2) not null, ytd_sales Number(6,2) not null, remarks Varchar(60))
+
+Select * from salesman_master
+INSERT INTO salesman_master VALUES ('S00001','Kiran','A/14','Worli','Bombay','400002','MAH','3000','100','50','Good')
+INSERT INTO salesman_master VALUES ('S00002','Manish','65','Nariman','Bombay','400001','MAH','3000','200','100','Good')
+INSERT INTO salesman_master VALUES ('S00003','Ravi','P-7','Bandra','Bombay','400032','MAH','3000','200','100','Good')
+INSERT INTO salesman_master VALUES ('S00004','Ashish','A/5','Juhu','Bombay','400042','MAH','3500','200','150','Good')
+
+--2 
+create table sales_order 
+(s_order_no Varchar(6) primary key check(s_order_no like'O%'), 
+s_order_date Date, client_no Varchar(6), dely_addr Varchar(25), 
+salesman_no Varchar(6) references salesman_master, dely_type Char(1) Default 'F', billed_yn Char(1) Default 'N', 
+dely_date Date, order_status Varchar(10),
+constraint dely_type check (dely_type in ('P','F')),
+constraint billed_yn check (billed_yn in ('Y','N')),
+constraint dely_date check (dely_date > s_order_date), 
+constraint order_status check (order_status in('IP','F','BO','C')))
+
+
+Select * from sales_order
+INSERT INTO sales_order VALUES('O19001','12-Jan-2021','C00001',' ','S00001','F','N','20-Jan-2021','IP')
+INSERT INTO sales_order VALUES('O19002','25-Jan-2021','C00002',' ','S00002','P','N','27-Jan-2021','C')
+INSERT INTO sales_order VALUES('O46865','18-Feb-2021','C00003',' ','S00003','F','Y','20-Feb-2021','F')
+INSERT INTO sales_order VALUES('O19003','03-Apr-2021','C00001',' ','S00001','F','Y','07-Apr-2021','F')
+INSERT INTO sales_order VALUES('O46866','20-May-2021','C00004',' ','S00002','P','N','22-May-2021','C')
+INSERT INTO sales_order VALUES('O10008','24-May-2021','C00005',' ','S00004','F','N','26-May-2021','IP')
+
+--3
+create table sales_order_details(s_order_no Varchar(6)  references sales_order, product_no Varchar(6),
+qty_ordered Numeric(8), qty_disp Numeric(8), product_rate Numeric(10,2))
+
+Select * from sales_order_details
+INSERT INTO sales_order_details VALUES ('O19001','P00001','4','4','525')
+INSERT INTO sales_order_details VALUES ('O19001', 'P07965', '2', '1','8400')
+INSERT INTO sales_order_details VALUES ('O19001', 'P07885', '2', '1','5250')
+INSERT INTO sales_order_details VALUES ('O19002', 'P00001', '10', '0','525')
+INSERT INTO sales_order_details VALUES ('O46865', 'P07868', '3', '3','3150')
+INSERT INTO sales_order_details VALUES ('O46865', 'P07885', '3', '1','5250')
+INSERT INTO sales_order_details VALUES ('O46865', 'P00001', '10', '10','525')
+INSERT INTO sales_order_details VALUES ('O46865', 'P03453', '4', '4','1050')
+INSERT INTO sales_order_details VALUES ('O19003', 'P03453', '2', '2','1050')
+INSERT INTO sales_order_details VALUES ('O19003', 'P06734', '1', '1','12000')
+INSERT INTO sales_order_details VALUES ('O46866', 'P07965', '1', '0','8400')
+INSERT INTO sales_order_details VALUES ('O46866', 'P07975', '1', '0','1050')
+INSERT INTO sales_order_details VALUES ('O10008', 'P00001', '10', '5','525')
+INSERT INTO sales_order_details VALUES ('O10008', 'P07975', '5', '3','1050')
