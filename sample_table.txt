@@ -1,0 +1,34 @@
+-ADMIN TABLE-
+Create table Admin(Admin_ID varchar(10), Email varchar(20), Password varchar(20))
+
+-USERS TABLE-
+Create table Users (User_ID varchar(6) primary key, User_Name varchar(20), Email varchar(20), Password varchar(20), Date_of_Reg date,
+Address varchar(30), Contact_No varchar(20))
+
+-PRODUCT TABLE-
+Create table PRODUCT (Product_ID varchar(6) primary key, Product_Name varchar(10) not null, Category_ID varchar(10),  
+Product_Price varchar(10), Product_Image varchar2(10), Product_Available_Qty varchar(10),
+foreign key (Category_ID) references category(Category_ID))
+
+-CART TABLE-
+Create table Cart(Cart_ID varchar(6) Primary Key, User_ID varchar(10),
+Foreign Key(User_ID) references Users (User_ID))
+
+-CART_ITEMS TABLE-
+Create table Cart_Items (Cart_Items_ID varchar(6) primary key, Cart_ID varchar(10), User_ID varchar(10),
+Product_ID varchar(6), Product_Qty varchar(10),
+Foreign key(User_ID) references Users (User_ID),
+Foreign key(Cart_ID) references CART (Cart_ID))
+
+-CATEGORY TABLE-
+Create table CATEGORY(CATEGORY_ID varchar(6) primary key, CATEGORY_NAME varchar(10))
+
+-COUPON TABLE-`
+Create table Coupon(Coupon_ID varchar(10), Coupon_Name varchar(10), Discount_Val Number(10,2), Expiry_Date date)
+
+-ORDERS TABLE-
+CREATE TABLE Orders(Order_ID varchar(10), Cart_ID varchar(10), User_ID varchar(10), Order_Date date default sysdate, 
+Deliver_Date date default sysdate+7, Coupon_ID varchar(10), Bill_Amount number(10,2), Payment_Method varchar(10),
+Foreign Key (Cart_ID) references Cart (Cart_ID),
+Foreign Key (User_ID) references Users (User_ID),
+Constraint Payment_Method check( Payment_Method in('COD','CREDIT','DEBIT','WALLET')))

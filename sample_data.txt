@@ -1,0 +1,28 @@
+Insert into Admin values ('AD_001','Mico@atos.net','12345')
+
+Insert into Users values ('U001','Mico18','mico12@atos.net','23232','01-JAN-2022','BINAN_LAGUNA','09787866333')
+Insert into Users values ('U002','Mica20','mica20@atos.net','23432','03-JAN-2022','STA.ROSA_LAGUNA','09124509333')
+Insert into Users values ('U003','Micoy21','micoy02@atos.net','12122','06-JAN-2022','SAN PEDRO_LAGUNA','09125567809')
+
+Insert into Cart values ('CRT_01','U003')
+Insert into Cart values ('CRT_02','U002')
+Insert into Cart values ('CRT_03','U001')
+
+Insert into Cart_Items values ('CRT-01','CRT_01','U003','PRD_01','2')
+Insert into Cart_Items values ('CRT-02','CRT_02','U002','PRD_02','4')
+
+Insert into Category values ('CT-1','Gadgets')
+Insert into Category values ('CT-2','Clothes')
+Insert into Category values ('CT-3','Home')
+
+Insert into Product values ('PRD_01','Laptop','CT-1','20000','laptop.png','100')
+Insert into Product values ('PRD_02','Shirts','CT-2','500','shirt.png','150')
+Insert into Product values ('PRD_03','Sofa','CT-3','25000','sofa.png','50')
+
+Insert into Coupon values ('CPN_01','CPN_50','0.5','01-JAN-2022')
+Insert into Coupon values ('CPN_02','SPS_70','0.7','01-MAY-2022')
+Insert into Coupon values ('CPN_03','BS_80','0.8','01-DEC-2022')
+
+Insert into Orders values ('ODR_001','CRT_01','U001','31-JAN-2022','08-FEB-2022','CPN_01','40000','DEBIT')
+Insert into Orders values ('ODR_002','CRT_01','U001','01-FEB-2022','09-FEB-2022','CPN_03','50000','COD')
+Insert into Orders values ('ODR_003','CRT_02','U002','27-JAN-2022','04-FEB-2022','CPN_02','60000','WALLET')
