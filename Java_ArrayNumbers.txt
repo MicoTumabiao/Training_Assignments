@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class ArrayNumbers {
+public static void main (String[]args) {
+	
+	int a, max;
+
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter the number of elements in the array:");
+	a = sc.nextInt();
+	int table[] = new int[a];
+	System.out.println("Enter the elements of array");
+	for(int i = 0; i < a; i++) {
+		table[i] = sc.nextInt();
+	}
+	max = table[0];
+	for (int i=0; i<a; i++) {
+		if (max < table[i]) {
+			
+		max = table[i];
+	}
+}
+System.out.println("The Largest Number of Array is:" +max);
+}
+}

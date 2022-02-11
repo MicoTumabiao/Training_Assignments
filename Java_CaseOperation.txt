@@ -1,0 +1,72 @@
+
+
+import java.util.Scanner;
+
+public class CaseOperation {
+	public static void main(String[]args) {
+	
+	int val = 0;
+	int x, num1, num2, value;
+	
+	
+	Scanner sc = new Scanner(System.in);
+	
+	System.out.println("Select Operation");
+	System.out.println("1 - Addition");
+	System.out.println("2 - Subtraction");
+	System.out.println("3 - Multiplication");
+	System.out.println("4 - division");
+	val=sc.nextInt();
+
+
+	switch(val){ 
+	
+		case 1 :	
+			System.out.println("Enter 1st Number:");
+			x=sc.nextInt();
+			num1 = x;
+			System.out.println("Enter 2nd Number:");
+			x=sc.nextInt();
+			num2 = x;
+			value = num1 + num2;
+			System.out.println("The value is:" +value);	
+			break;
+		case 2 :
+			System.out.println("Enter 1st Number:");
+			x=sc.nextInt();
+			num1 = x;
+			System.out.println("Enter 2nd Number:");
+			x=sc.nextInt();
+			num2 = x;
+			value = num1 - num2;
+			System.out.println("The value is:" +value);	
+			break;
+		case 3 :
+			System.out.println("Enter 1st Number:");
+			x=sc.nextInt();
+			num1 = x;
+			System.out.println("Enter 2nd Number:");
+			x=sc.nextInt();
+			num2 = x;
+			value = num1 * num2;
+			System.out.println("The value is:" +value);	
+			break;
+		case 4 :
+			System.out.println("Enter 1st Number:");
+			x=sc.nextInt();
+			num1 = x;
+			System.out.println("Enter 2nd Number:");
+			x=sc.nextInt();
+			num2 = x;
+			value = num1 / num2;
+			System.out.println("The value is:" +value);	
+			break;
+			}
+	
+	   
+	}
+	
+	}
+
+
+
